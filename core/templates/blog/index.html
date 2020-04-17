@@ -1,5 +1,25 @@
 {% extends 'blog/base.html' %} 
 
 {% block content %}
-<h1>Hello World!</h1>
+<h1 class="my-4">Projects</h1>
+<div class="row">
+  {% if projects %}
+  {% for project in projects %}
+    <div class="col-md-4">
+      <div class="card mb-2">
+        <img class="card-img-top" src="#">
+        <div class="card-body">
+          <h5 class="card-title">{{ project.title }}</h5>
+          <p class="card-text">{{ project.description }}</p>
+          <a class="btn btn-primary" href="{% url 'project_detail' project.pk %}">Read More</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+  {% else %}
+  <div class="alert alert-primary">
+    There is no projects.
+  </div>
+  {% endif %}
+</div>
 {% endblock%}
