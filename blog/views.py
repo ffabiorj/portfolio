@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from blog.views import Post, Category, Comment
+from blog.models import Post, Category, Comment
 from blog.forms import CommentForm
 
 
@@ -28,7 +28,7 @@ def blog_detail(request, pk):
         if form.is_valid():
             comment = Comment(
                 author=form.cleaned_data["author"],
-                body=form.cleaned_data["data"],
+                body=form.cleaned_data["body"],
                 post=post,
             )
         comment.save()
